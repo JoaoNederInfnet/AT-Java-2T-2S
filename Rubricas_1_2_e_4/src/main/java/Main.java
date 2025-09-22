@@ -1,10 +1,7 @@
-import models.ResponseCodeAndBody;
 import routings.Routing;
 import io.javalin.Javalin;
 import io.javalin.json.JavalinJackson;
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URISyntaxException;
+
 
 public class Main
 {
@@ -15,22 +12,22 @@ public class Main
     {
         /*/ ------------------------------- SETUP DA API ------------------------------- /*/
         //•ETAPAS•//
-        //1) Instanciando meu servidor e configurando para o javalin usar o Jackson como conversor de JSON
+        //1) Instanciando minha api e configurando para o javalin usar o Jackson como conversor de JSON
         var app = Javalin.create(config ->
         {
             config.jsonMapper(new JavalinJackson());
         });
         //--------------------------------------------/------------------------------------------
 
-        //2)  Mapeamento de rota para checar se o servidor subiu
-        app.get("/", context -> context.result("Servidor online."));
+        //2)  Mapeamento de rota para checar se a api subiu
+        app.get("/", context -> context.result("Servidor online.")); // Só fazer curl http://localhost:7777/ no terminal para checar
         //--------------------------------------------/------------------------------------------
 
         //3) Adicionando as rotas mapeadas no controller
         Routing.mapeamentoDasRotas(app);
         //--------------------------------------------/------------------------------------------
 
-        //4) Iniciando o servidor configurado
+        //4) Iniciando a api configurada
         app.start(7777);
     }
 }

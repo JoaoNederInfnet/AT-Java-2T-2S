@@ -1,9 +1,5 @@
 import clients.Client;
 import models.ResponseCodeAndBody;
-import routings.Routing;
-import io.javalin.Javalin;
-import io.javalin.json.JavalinJackson;
-
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URISyntaxException;
