@@ -40,7 +40,7 @@ public class Mensalista
     }
     //--------------------------------------------/------------------------------------------
     //2)Incompleto -> Mensalista não registrado
-    public Mensalista(String nome, int matricula)
+    public Mensalista(String nome)
     {
         setNome(nome);
     }

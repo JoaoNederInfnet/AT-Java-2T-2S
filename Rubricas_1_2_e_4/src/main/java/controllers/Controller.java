@@ -1,30 +1,37 @@
 package controllers;
 
 /*/ ------------------------------- IMPORTAÇÕES------------------------------- /*/
-import com.fasterxml.jackson.databind.JsonNode;
-import models.Mensalista;
+
 import io.javalin.http.Context;
-import java.io.*;
+import models.Mensalista;
+
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 //========================================================
 
-
 public class Controller
 {
-    //http://localhost:7777
     /*/ ------------------------------- SETUP ------------------------------- /*/
     //1) Para simular  o banco de dados
-    private static Map<Integer, Mensalista> mensalistas = new HashMap<>();
+    public static Map<Integer, Mensalista> mensalistas = new HashMap<>();
     //--------------------------------------------/------------------------------------------
     //2) Para fazer a incrementação do id
-    private static int lastMatricula = 0;
+    public static int lastMatricula = 0;
     //========================================================
 
     /*/ ------------------------------- HANDLERS DE REQUISIÇÃO ------------------------------- /*/
     // # Rúbrica 1
     //#) GETS
+    //1) get Hello (Só para fazer o teste)
+    public static void getHello(Context context)
+    {
+        context.status(200);
+        context.result("Hello, Javalin!");
+    }
+    //--------------------------------------------/------------------------------------------
+    //2) get Hora
     public static void getHoraAtual(Context context)
     {
         Map<String, Object> resposta = new HashMap<>();
@@ -89,7 +96,7 @@ public class Controller
         {
             context.status(200);
 
-            context.json(mensalistas.values());
+            context.json(new ArrayList<>(mensalistas.values()));
         }
     }
     //--------------------------------------------/------------------------------------------

@@ -19,7 +19,7 @@ public class Routing
         //•ENDPOINTS•//
         // # Rúbrica 1
         // hello
-        app.get("/hello", context -> context.result("Hello, Javalin!") );
+        app.get("/hello", Controller::getHello);
         //--------------------------------------------/------------------------------------------
 
         //  status
